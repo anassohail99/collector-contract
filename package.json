@@ -1,0 +1,10 @@
+{
+    "scripts": {
+        "test": "clear && forge test -vv",
+        "test-mainnet": "forge test --fork-url $ETH_RPC_URL -vv",
+        "logtest": "clear && forge test -vvvv",
+        "deploy-collector": "./bin/deployCollector.sh"
+    
+      },
+      "author": "Anas Bin Sohail <0x_anas>"
+}
