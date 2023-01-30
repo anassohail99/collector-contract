@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-
+import "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "openzeppelin-contracts/contracts/access/Ownable.sol";
+import "openzeppelin-contracts/contracts/security/ReentrancyGuard.sol";
 
 contract Collector is Ownable, ReentrancyGuard {
     address public tokenAddress;
@@ -20,21 +19,15 @@ contract Collector is Ownable, ReentrancyGuard {
     function collect(uint256 amount) public {
         require(
             IERC20(tokenAddress).allowance(msg.sender, address(this)) >= amount,
-            "STF"
+            "NA"
         );
-        IERC20(tokenAddress).transferFrom(msg.sender, address(this), amount);
+        IERC20(tokenAddress).transferFrom(msg.sender, owner(), amount);
         tokenBalance += amount;
         userTokenBalances[msg.sender] += amount;
-        emit Collect(msg.sender,amount);
+        emit Collect(msg.sender, amount);
     }
 
     function userBalance(address tokenHolder) public view returns (uint256) {
         return userTokenBalances[tokenHolder];
-    }
-
-    function getBalance() public nonReentrant onlyOwner  {
-        require(tokenBalance > 0, "Zero Balance");
-        IERC20(tokenAddress).transfer(msg.sender, tokenBalance);
-        tokenBalance = 0;
     }
 }
