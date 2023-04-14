@@ -16,10 +16,10 @@ contract Collector is Ownable, ReentrancyGuard {
         tokenAddress = _tokenAddress;
     }
 
-    function collect(uint256 amount) public {
+    function collect(uint256 amount) public nonReentrant {
         require(
             IERC20(tokenAddress).allowance(msg.sender, address(this)) >= amount,
-            "NA"
+            "Collector:: Not Approved"
         );
         IERC20(tokenAddress).transferFrom(msg.sender, owner(), amount);
         tokenBalance += amount;
