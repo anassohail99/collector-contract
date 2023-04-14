@@ -3,8 +3,13 @@
         "test": "clear && forge test -vv",
         "test-mainnet": "forge test --fork-url $ETH_RPC_URL -vv",
         "logtest": "clear && forge test -vvvv",
-        "deploy-collector": "./bin/deployCollector.sh"
+        "deploy-collector": "./bin/deployCollector.sh",
+        "deploy-collectorv2": "./bin/deployCollectorV2.sh",
+        "deploy-withdrawal": "./bin/deployWithdrawal.sh"
     
       },
       "author": "Anas Bin Sohail <0x_anas>"
 }
+
+
+
