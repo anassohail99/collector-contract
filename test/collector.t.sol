@@ -20,7 +20,7 @@ contract CollectorTest is Test {
     }
 
     function testcannotCollect() public {
-        hevm.expectRevert(bytes("NA"));
+        hevm.expectRevert(bytes("Collector:: Not Approved"));
         collector.collect(10e18);
     }
 
