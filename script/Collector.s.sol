@@ -11,7 +11,7 @@ contract DeployCollectorScript is Script {
         vm.startBroadcast(deployerPrivateKey);
 
         Collector collector = new Collector(
-            0x6bf322e9db8b725E840dAc6fe403B923003584A0
+            0x439ecD2F575f84Ce1587e011116b899Bd0aF1552
         );
 
         vm.stopBroadcast();
